@@ -1,1 +1,33 @@
+small_message = ["Battery level is critical",
+"Object collision detected",
+"Robot is overheating",
+"Robot is 10 feet from object",
+"System malfunction",
+"New foreign substance detected",
+"Robot has gathered soil sample",
+"Abnormal weather detected",
+"Collected samples are ready for analyzation",
+"Robot has found water source"]
+
+big_message = ["Battery level is critical",
+"Object collision detected",
+"Robot is overheating",
+"Robot is 10 feet from object",
+"System malfunction",
+"New foreign substance detected",
+"Robot has gathered soil sample",
+"Abnormal weather detected",
+"Collected samples are ready for analyzation",
+"Robot has found water source",
+"Robot’s deviates significantly from path",
+"Robot is stuck in a pitfall",
+"Robot’s camera is damaged",
+"Robot has encountered unknown object",
+"Robot has analyzed atmospheric composition",
+"Progress update: x% completed",
+"Robot has removed space junk",
+"Robot has taken an image of its surroundings",
+"Strong winds detected",
+"Robot’s current location is (x,y,z)"]
+
 
