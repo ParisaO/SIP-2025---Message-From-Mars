@@ -1,3 +1,4 @@
+### One-hot (1)
 def encoder (message, M_set):
   if message not in M_set:
       print("Error: Message not found in message set.")
@@ -15,7 +16,32 @@ def decoder(binary_str, messages) :
     print(message)
 decoder("10100", big_message)
 
-# Parity bit
+
+
+
+### One-hot (2)
+import math
+
+def one_hot_encoder(message, message_set):
+    if message not in message_set:
+        raise ValueError("Message not found in message set.")
+    index = message_set.index(message)
+    num_bits = math.ceil(np.log2(len(message_set)))
+    binary = bin(index)[2:].zfill(num_bits)
+    return np.array([int(b) for b in binary])
+
+def one_hot_decoder(binary_array, message_set):
+    binary_str = ''.join(str(int(b)) for b in binary_array)
+    index = int(binary_str, 2)
+    if index >= len(message_set):
+        raise ValueError("Decoded index is out of range.")
+    return message_set[index]
+
+
+
+
+
+### Parity bit
 def parity(message, M_set):
   num = M_set.index(message)
   binary_num = bin(num)[2:]
