@@ -78,17 +78,17 @@ for snr_db in snr_dBs:
     for _ in range(num_trials):
         msg = np.random.choice(messages)
         idx = message_to_index(msg)
-        bits = encode(idx)
+        bits = encode(idx)    # bits = 0101
         signal = modulate(bits)
         noisy_signal = add_awgn_noise(signal, snr_db)
         received_bits = demodulate(noisy_signal)
-        decoded_idx = decode_message(received_bits, method=selected_encoder)
+        decoded_idx = decode_message(received_bits, method=selected_encoder)    
 
         bit_errors = np.sum(bits != received_bits[:len(bits)])
-        total_errors += bit_errors
-        total_bits += len(bits)
+        total_errors += bit_errors   
+        total_bits += len(bits)   
 
-    ber = total_errors / total_bits
+    ber = total_errors / total_bits     
     ber_results.append(ber)
     print(f"SNR={snr_db} dB, BER={ber:.4f}")
 
