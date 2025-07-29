@@ -1,3 +1,6 @@
+import math
+import numpy as np
+
 ### One-hot (1)
 def encoder (message, M_set):
   if message not in M_set:
@@ -20,8 +23,6 @@ decoder("10100", big_message)
 
 
 ### One-hot (2)
-import math
-
 def one_hot_encoder(message, message_set):
     if message not in message_set:
         raise ValueError("Message not found in message set.")
