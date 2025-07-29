@@ -1,10 +1,47 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from Source_Coding import one_hot_encoder, parity_encoder, hamming_encoder, decode_message
+from Source_Coding import one_hot_encoder, one_hot_decoder, parity_encoder, parity_decoder    # Add Hamming
 from Channel_Modulation import bpsk_modulate, bpsk_demodulate, qpsk_modulate, qpsk_demodulate
-from Message_Set import get_message_set, message_to_index
+from Message_Set import get_message_set, message_to_index    # Add intelligent message sets
 from AWGN import add_awgn_noise
+
+
+
+small_message_set = ["Battery level is critical",
+"Object collision detected",
+"Robot is overheating",
+"Robot is 10 feet from object",
+"System malfunction",
+"New foreign substance detected",
+"Robot has gathered soil sample",
+"Abnormal weather detected",
+"Collected samples are ready for analyzation",
+"Robot has found water source"]
+
+big_message_set = ["Battery level is critical",
+"Object collision detected",
+"Robot is overheating",
+"Robot is 10 feet from object",
+"System malfunction",
+"New foreign substance detected",
+"Robot has gathered soil sample",
+"Abnormal weather detected",
+"Collected samples are ready for analyzation",
+"Robot has found water source",
+"Robot’s deviates significantly from path",
+"Robot is stuck in a pitfall",
+"Robot’s camera is damaged",
+"Robot has encountered unknown object",
+"Robot has analyzed atmospheric composition",
+"Progress update: x% completed",
+"Robot has removed space junk",
+"Robot has taken an image of its surroundings",
+"Strong winds detected",
+"Robot’s current location is (x,y,z)"]
+
+
+
 
 # Configuration
 snr_dBs = [0, 2, 4, 6, 8, 10]
@@ -24,14 +61,14 @@ modulator_options = {
 }
 
 
-selected_encoder = "parity"      # Options: "one_hot", "parity", "hamming"
+selected_encoder = "one-hot"      # Options: "one_hot", "parity", "hamming"
 selected_modulator = "BPSK"      # Options: "BPSK", "QPSK"
 
 encode = encoder_options[selected_encoder]
 modulate, demodulate = modulator_options[selected_modulator]
 
 # Load messages
-messages = get_message_set()
+messages = small_message_set    ## Choose one message set here
 ber_results = []
 
 for snr_db in snr_dBs:
