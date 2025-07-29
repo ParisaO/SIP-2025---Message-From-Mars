@@ -43,7 +43,7 @@ def one_hot_decoder(binary_array, message_set):
 
 
 ### Parity bit
-def parity(message, M_set):
+def parity_encoder(message, M_set):
   num = M_set.index(message)
   binary_num = bin(num)[2:]
   while len(binary_num) < 5:
@@ -57,7 +57,7 @@ def parity(message, M_set):
 
 parity("Object collision detected", big_message)
 
-def check_parity(received_bits_str):
+def parity_decoder(received_bits_str):
   if received_bits_str[:5].count("1") % 2 == 0: # if even number of 1s, check for 0
     if received_bits_str[5] == '0':
       print("No error detected") # true
@@ -68,6 +68,4 @@ def check_parity(received_bits_str):
       print("No error detected") # true
     else:
       print("Error detected") # false
-
-check_parity("000011")
 
