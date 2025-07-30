@@ -3,9 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from Source_Coding import one_hot_encoder, one_hot_decoder, parity_encoder, parity_decoder    # Add Hamming
 from Channel_Modulation import bpsk_modulate, bpsk_demodulate, qpsk_modulate, qpsk_demodulate
-from Message_Set import get_message_set, message_to_index    # Add intelligent message sets
+from Message_Set import message_to_index    
 from AWGN import add_awgn_noise
-from message_to_index import message_to_index
 
 
 small_message_set = ["Battery level is critical",
