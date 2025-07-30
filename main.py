@@ -62,7 +62,7 @@ modulator_options = {
 }
 
 
-selected_encoder = "one-hot"      # Options: "one_hot", "parity", "hamming"
+selected_encoder = "one_hot"      # Options: "one_hot", "parity", "hamming"
 selected_modulator = "BPSK"      # Options: "BPSK", "QPSK"
 
 encode = encoder_options[selected_encoder]
