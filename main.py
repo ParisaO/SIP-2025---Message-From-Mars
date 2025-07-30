@@ -78,7 +78,7 @@ for snr_db in snr_dBs:
 
     for _ in range(num_trials):
         msg = np.random.choice(messages)
-        idx = message_to_index(msg)
+        idx = message_to_index(msg, messages)
         bits = encode(idx)    # bits = 0101
         signal = modulate(bits)
         noisy_signal = add_awgn_noise(signal, snr_db)
