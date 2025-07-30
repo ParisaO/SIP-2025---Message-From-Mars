@@ -8,7 +8,7 @@ def encoder (message, M_set):
   num = M_set.index(message) #index of the message in the list
   binary_num = bin(num)[2:].zfill(5)  # convert index to binary and turn to 5 bits
   print(binary_num)
-encoder("Robot’s current location is (x,y,z)", big_message)
+encoder("Robot’s current location is (x,y,z)", big_message_set)
 
 def decoder(binary_str, messages) :
   decimal_int = int(str(binary_str), 2) # decimal int is number in list, binary_str is encoded message in binary
@@ -17,7 +17,7 @@ def decoder(binary_str, messages) :
   else:
     message = messages[decimal_int - 1]
     print(message)
-decoder("10100", big_message)
+decoder("10100", big_message_set)
 
 
 
@@ -55,7 +55,7 @@ def parity_encoder(message, M_set):
     binary_num = binary_num + "1" # if odd 1s, end with 1
   print(binary_num)
 
-parity("Object collision detected", big_message)
+parity("Object collision detected", big_message_set)
 
 def parity_decoder(received_bits_str):
   if received_bits_str[:5].count("1") % 2 == 0: # if even number of 1s, check for 0
