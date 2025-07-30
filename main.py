@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from Source_Coding import one_hot_encoder, one_hot_decoder, parity_encoder, parity_decoder    # Add Hamming
 from Channel_Modulation import bpsk_modulate, bpsk_demodulate, qpsk_modulate, qpsk_demodulate
-from Message_Set import message_to_index    
+from message_to_index import message_to_index    
 from AWGN import add_awgn_noise
 
 
