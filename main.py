@@ -78,6 +78,7 @@ for snr_db in snr_dBs:
 
     for _ in range(num_trials):
         msg = np.random.choice(messages)
+        message = message[0]
         idx = message_to_index(msg, messages)
         bits = encode(idx)    # bits = 0101
         signal = modulate(bits)
