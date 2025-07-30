@@ -24,5 +24,5 @@ def message_to_index(message_set, message):
     return code_map.get(message, "Error: Message not in set")
 
 
-binary_str = message_to_index(small_message, "Robot is overheating")
-print(binary_str)  # Output should be '0111'
+#binary_str = message_to_index(small_message, "Robot is overheating")
+#print(binary_str)  # Output should be '0111'
