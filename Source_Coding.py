@@ -1,28 +1,8 @@
 import math
 import numpy as np
 
-### One-hot (1)
-def encoder (message, M_set):
-  if message not in M_set:
-      print("Error: Message not found in message set.")
-  num = M_set.index(message) #index of the message in the list
-  binary_num = bin(num)[2:].zfill(5)  # convert index to binary and turn to 5 bits
-  print(binary_num)
-#encoder("Robot’s current location is (x,y,z)", big_message_set)
 
-def decoder(binary_str, messages) :
-  decimal_int = int(str(binary_str), 2) # decimal int is number in list, binary_str is encoded message in binary
-  if decimal_int > len(messages):
-    print("Error: message doesn't exist")
-  else:
-    message = messages[decimal_int - 1]
-    print(message)
-#decoder("10100", big_message_set)
-
-
-
-
-### One-hot (2)
+### One-hot Encoders
 def one_hot_encoder(message, message_set):
     if message not in message_set:
         raise ValueError("Message not found in message set.")
@@ -30,6 +10,13 @@ def one_hot_encoder(message, message_set):
     num_bits = math.ceil(np.log2(len(message_set)))
     binary = bin(index)[2:].zfill(num_bits)
     return np.array([int(b) for b in binary])
+
+### Intelligent 
+def one_hot_encoder_I(index, message_set):
+    num_bits = math.ceil(np.log2(len(message_set)))
+    binary = bin(index)[2:].zfill(num_bits)
+    return np.array([int(b) for b in binary])
+  
 
 def one_hot_decoder(binary_array, message_set):
     binary_str = ''.join(str(int(b)) for b in binary_array)
