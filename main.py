@@ -45,15 +45,17 @@ big_message_set = ["Battery level is critical",
 
 
 # Configuration
-snr_dBs = [0, 2, 4, 6, 8, 10]
-num_trials = 1000
+# snr_dBs = [0, 2, 4, 6, 8, 10]
+snr_dBs = [5]
+# num_trials = 1000
+num_trials = 1
 
 
 ## encoder and channel modulator options: 
 encoder_options = {
-    "one_hot": one_hot_encoder,
-    "parity": parity_encoder,
-    "hamming": hamming_encoder
+    "one_hot": (one_hot_encoder, one_hot_decoder),
+    "parity": (parity_encoder, parity_decoder),
+    "hamming": (hamming_encoder, hamming_decoder)
 }
 
 modulator_options = {
@@ -65,7 +67,8 @@ modulator_options = {
 selected_encoder = "one_hot"      # Options: "one_hot", "parity", "hamming"
 selected_modulator = "BPSK"      # Options: "BPSK", "QPSK"
 
-encode = encoder_options[selected_encoder]
+encoder, decoder = encoder_options[selected_encoder]
+
 modulate, demodulate = modulator_options[selected_modulator]
 
 # Load messages
@@ -76,15 +79,18 @@ for snr_db in snr_dBs:
     total_errors = 0
     total_bits = 0
 
-    for _ in range(num_trials):
+    for n in range(num_trials):
         msg = np.random.choice(messages)
-        messages = messages[0]
-        idx = message_to_index(msg, messages)
-        bits = encode(idx, messages)    # bits = 0101
+        print("The Generated message: ", msg, "At iteration ",n)
+
+        idx = message_to_index(messages, msg)
+        print("idx:", idx)
+
+        bits = encoder(idx, messages)    
         signal = modulate(bits)
         noisy_signal = add_awgn_noise(signal, snr_db)
         received_bits = demodulate(noisy_signal)
-        decoded_idx = decode_message(received_bits, method=selected_encoder)    
+        decoded_idx = decoder(received_bits, method=selected_encoder)    
 
         bit_errors = np.sum(bits != received_bits[:len(bits)])
         total_errors += bit_errors   
